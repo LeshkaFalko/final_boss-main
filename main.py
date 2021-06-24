@@ -139,6 +139,7 @@ print('\n' + 'Конец моей части')
 print('Фалько начало')
 
 UzlovidePeremesheniya= []
+
 def matrichnoeUravnenie():
     for i in range(len(gestkosti) + 1):
         UzlovidePeremesheniya.append('U' + str(i + 1))
@@ -178,7 +179,8 @@ def makeArrU():
 
 makeArrU()
 
-print('Убираем лишнее')
+print('Упрощаем для решения методом Гаусса (этап 1) - убираем лишнее для наглядности')
+print('Убираем нулевые строки и столбцы для уменьшения количества действий')
 for i in range(len(arr)):
     print(str(arr[i]) + ' = ' + str(arrU[i]))
 print('')
@@ -208,7 +210,7 @@ def roundNum(num, DrobnChast):
     num = round(num * 10 ** int(DrobnChast))/(10 ** int(DrobnChast))
     return num
 
-print('Приводим к диагональному виду')
+print('Упрощаем для решения методом Гаусса (этап 2)')
 
 def triangleArray():
     for i in range(len(arr) - 1, 0, -1):
