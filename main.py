@@ -275,21 +275,9 @@ N = []
 for i in range(len(gestkosti)):
     N.append([])
 
-# Число узлов, число элментов, массив координат узлов, массив длин элементов
+
 length=[]
-def uzlovie_coordinates():
-    with open("input File.txt", "r") as f:
-        for line in f:
-            if line[slice(0,4)] == 'GRID':
-                arr = line.split(' ')
-                arr = [x for x in arr if x != '']
-                el_length = arr[2]
-                L1 = el_length.split('.')
-                if L1[1] == '':
-                    L1[1] = '0'
-                el_length = int(L1[0]) + int(L1[1])/10**(len(L1[1]))
-                length.append(el_length)
-    return length
+
 
 def masssiveFunFormForEachElementInTochka(x):
     for i in range(len(gestkosti)):
@@ -341,40 +329,6 @@ if m == '1' or m.lower() == 'да':
         m = vopros('Хотите снова найти перемещение в указанной точке? ')
 
 print('')
-
-arrT = []
-
-rasDef = False
-maxDef = False
-
-
-def skolkoTochek(rasDef, maxDef):
-    kolT = None
-    while kolT == None:
-        if rasDef is True:
-            kolT = input('Сколько точек хотите рассмотреть в каждом элементе? (Не считая узловых точек) ')
-        elif maxDef is True:
-            kolT = input('На сколько точек хотите разбить элементы? ')
-    for i in range(int(kolT) + 2):
-        arrT.append(1 / (int(kolT) + 1) * i)
-    return arrT
-
-
-arrRas = []
-for i in range(len(gestkosti)):
-    arrRas.append([])
-
-
-def makeArrayRaspredelenya():
-    skolkoTochek(True, False)
-    for i in range(len(gestkosti)):
-        for j in range(len(arrT)):
-            masssiveFunFormForEachElementInTochka(arrT[j])
-            PeremeshenieElementaVTochke = N[i][0] * U[i] + N[i][1] * U[i + 1]
-            if okr is True:
-                PeremeshenieElementaVTochke = roundNum(PeremeshenieElementaVTochke, DrobnChast)
-            arrRas[i].append(PeremeshenieElementaVTochke)
-    return arrRas
 
 
 print('\n' + 'Конец решения')
